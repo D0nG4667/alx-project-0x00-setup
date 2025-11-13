@@ -1,62 +1,9 @@
-# 🏗️ ALX Project 0x00 – Next.js Setup
+# 🌍 ALX Project 0x00 — Next.js Setup
 
-## 📘 Project Overview
+## 🚀 Overview
 
-This project demonstrates how to scaffold a modern **Next.js** application using **TypeScript**, **Tailwind CSS**, and **ESLint**, following industry-standard best practices.
-It serves as the foundation for learning how to build scalable, performant, and maintainable web applications using **Next.js**.
-
----
-
-## 🎯 Learning Objectives
-
-By completing this project, you will learn to:
-
-* Initialize a **Next.js** project using the `create-next-app` CLI.
-* Configure a **TypeScript**-based setup for type-safe React development.
-* Integrate **Tailwind CSS** for responsive, utility-first styling.
-* Enable **ESLint** for code quality and consistency.
-* Understand Next.js folder structure and how to organize your codebase.
-* Run and verify your local development environment.
-
----
-
-## ⚙️ Project Setup Steps
-
-### 1. Create the Project
-
-Use the official **Next.js CLI tool** to scaffold the app:
-
-```bash
-npx create-next-app@latest alx-project-0x00 --typescript
-```
-
-### 2. CLI Configuration
-
-During setup, select the following options when prompted:
-
-| Option               | Selection |
-| -------------------- | --------- |
-| **ESLint**           | ✅ Yes     |
-| **Tailwind CSS**     | ✅ Yes     |
-| **`/src` directory** | ❌ No      |
-| **App Router**       | ❌ No      |
-| **Import alias**     | ✅ Yes     |
-
-This ensures a clean, conventional **Pages Router** structure suitable for beginners.
-
----
-
-### 3. Start the Development Server
-
-After installation, navigate to your project directory and start the development server:
-
-```bash
-cd alx-project-0x00
-npm run dev -- -p 3000
-```
-
-The app should now be running at:
-👉 **[http://localhost:3000](http://localhost:3000)**
+This project introduces the foundational setup for building modern web applications using **Next.js**, **TypeScript**, and **Tailwind CSS**.
+You’ll explore the core setup process — from initializing a new project and structuring directories to implementing basic routing, reusable components, and understanding configuration files.
 
 ---
 
@@ -65,6 +12,7 @@ The app should now be running at:
 ```bash
 alx-project-0x00/
 ├── components/        # Reusable React components
+├── interfaces/        # TypeScript interfaces
 ├── pages/             # Page-based routing (Next.js Pages Router)
 ├── public/            # Static assets (images, fonts, etc.)
 ├── styles/            # Global and Tailwind CSS styles
@@ -72,27 +20,169 @@ alx-project-0x00/
 ├── tailwind.config.js # Tailwind setup
 ├── eslint.config.js   # ESLint configuration
 ├── next.config.ts     # Next.js configuration
-├── next-env.d.ts      # Next.js TypeScript environment types
-├── postcss.config.mjs # PostCSS configuration
+├── postcss.config.mjs # PostCSS setup
+├── next-env.d.ts      # TypeScript Next.js environment types
 └── package.json       # Project dependencies and scripts
 ```
 
 ---
 
-## 💡 Key Tools & Technologies
+## 🧱 Task 0: Scaffolding a Project
 
-* **Next.js** – React framework for production-grade apps
-* **TypeScript** – Type-safe JavaScript for better reliability
-* **Tailwind CSS** – Utility-first responsive styling
-* **ESLint** – Linting and code quality enforcement
+### 🎯 Objective
+
+Understand how to scaffold a new Next.js project using CLI tools like **npx** and **create-next-app**, and initialize it with **TypeScript**, **Tailwind CSS**, and **ESLint**.
+
+### ⚙️ Steps
+
+1. Open VSCode and start a new terminal.
+2. Navigate to your preferred project directory.
+3. Run the following command:
+
+   ```bash
+   npx create-next-app@latest alx-project-0x00 --typescript
+   ```
+
+4. Select the following options:
+
+   * ✅ **Yes** for: ESLint, Tailwind CSS, import alias
+   * ❌ **No** for: `/src` directory and App Router
+5. Start your app:
+
+   ```bash
+   npm run dev -- -p 3000
+   ```
+
+6. Visit [http://localhost:3000](http://localhost:3000).
 
 ---
 
-## ✅ Verification Checklist
+## 🗂️ Task 1: Setting Up Project Directories
 
-After setup, confirm that:
+### 🎯 Objective 1
 
-* `npm run dev` starts successfully on port `3000`.
-* ESLint runs without errors.
-* Tailwind CSS utilities work within components.
-* TypeScript successfully type-checks your code.
+Leverage the Next.js folder structure to create reusable and well-organized components and interfaces.
+
+### 🛠️ Implementation
+
+1. Create the following directories:
+
+   ```bash
+   mkdir components interfaces
+   ```
+
+2. In `pages/index.tsx`, refactor the component into an arrow function:
+
+   ```tsx
+   const Home: React.FC = () => {
+     return (
+       <main className="flex flex-col h-screen justify-center items-center text-4xl font-semibold">
+         <h1>Airbnb Application Clone system</h1>
+         <button className="border px-3 py-1 text-lg mt-3 bg-blue-500 text-white rounded-full">
+           Get Started
+         </button>
+       </main>
+     )
+   }
+
+   export default Home
+   ```
+
+3. Add the following empty files:
+
+   ```bash
+   touch interfaces/index.ts
+   touch components/Card.tsx components/Pill.tsx
+   ```
+
+4. Run:
+
+   ```bash
+   npm run dev -- -p 3000
+   ```
+
+5. Open [http://localhost:3000](http://localhost:3000) to confirm the setup.
+
+---
+
+## 🧭 Task 2: Basic Routing
+
+### 🎯 Objective 2
+
+Implement simple, file-based routing using the **Next.js Pages Router** — no configuration required.
+
+### 🛠️ Steps
+
+1. Create two new files:
+
+   ```bash
+   pages/
+   ├── landing.tsx
+   └── about.tsx
+   ```
+
+2. Add components:
+
+**`landing.tsx`**
+
+```tsx
+const Landing: React.FC = () => {
+  return (
+    <div>
+      <h1 className="text-xl font-extralight">Landing Page</h1>
+    </div>
+  )
+}
+export default Landing
+```
+
+**`about.tsx`**
+
+```tsx
+const About: React.FC = () => {
+  return (
+    <div>
+      <h1 className="text-xl font-extralight">About Page</h1>
+    </div>
+  )
+}
+export default About
+```
+
+3. Run:
+
+   ```bash
+   npm run dev -- -p 3000
+   ```
+
+4. Open in browser:
+
+   * [http://localhost:3000/landing](http://localhost:3000/landing)
+   * [http://localhost:3000/about](http://localhost:3000/about)
+
+### ✅ Outcome
+
+* Added static routes for `/landing` and `/about`.
+* Demonstrated file-based routing behavior.
+* Prepared the base for navigation components.
+
+---
+
+## 🧠 Learning Highlights
+
+* Understanding **Next.js CLI** setup with TypeScript.
+* Hands-on with **Pages Router** and routing fundamentals.
+* Applying **Tailwind CSS** for styling consistency.
+* Establishing clean folder structures for scalability.
+* Writing accessible, reusable, and typed React components.
+
+---
+
+## ⚡ Quick Commands
+
+| Command         | Description                |
+| --------------- | -------------------------- |
+| `npm run dev`   | Start development server   |
+| `npm run build` | Build production app       |
+| `npm start`     | Run production server      |
+| `npm run lint`  | Run ESLint for code checks |
